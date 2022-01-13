@@ -1,0 +1,122 @@
+/** NEXT-Pan-Book **/
+@font-face {
+	font-family: 'TheNextPanBook';
+	src: local('TheNextPanBook'),
+	url('NEXT-Pan-Book-Italic.woff') format('woff'),
+	url('NEXT-Pan-Book-Italic.otf') format('otf'),
+	url('NEXT-Pan-Book-Italic.woff2') format('woff2');
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'TheNextPanBookLightItalic';
+	src: local('TheNextPanBook'),
+	url('NEXT-Pan-Book-Light-Italic.woff') format('woff'),
+	url('NEXT-Pan-Book-Light-Italic.otf') format('otf'),
+	url('NEXT-Pan-Book-Light-Italic.woff2') format('woff2');
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'TheNextPanBookLight';
+	src: local('TheNextPanBook'),
+	url('NEXT-Pan-Book-Light.woff') format('woff'),
+	url('NEXT-Pan-Book-Light.otf') format('otf'),
+	url('NEXT-Pan-Book-Light.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'TheNextPanBookMedium';
+	src: local('TheNextPanBook'),
+	url('NEXT-Pan-Book-Medium.woff') format('woff'),
+	url('NEXT-Pan-Book-Medium.otf') format('otf'),
+	url('NEXT-Pan-Book-Medium.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'TheNextPanBook';
+	src: local('TheNextPanBook'),
+	url('NEXT-Pan-Book-Medium-Italic.woff') format('woff'),
+	url('NEXT-Pan-Book-Medium-Italic.otf') format('otf'),
+	url('NEXT-Pan-Book-Medium-Italic.woff2') format('woff2');
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'TheNextPanBook';
+	src: local('TheNextPanBook'),
+	url('NEXT-Pan-Book-Regular.woff') format('woff'),
+	url('NEXT-Pan-Book-Regular.otf') format('otf'),
+	url('NEXT-Pan-Book-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+/** NEXT-Pan-Poster **/
+@font-face {
+	font-family: 'TheNextPanPoster';
+	src: local('TheNextPanPoster'),
+	url('NEXT-Pan-Poster-Italic.woff') format('woff'),
+	url('NEXT-Pan-Poster-Italic.otf') format('otf'),
+	url('NEXT-Pan-Poster-Italic.woff2') format('woff2');
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'TheNextPanPosterLight';
+	src: local('TheNextPanBook'),
+	url('NEXT-Pan-Poster-Light.woff') format('woff'),
+	url('NEXT-Pan-Poster-Light.otf') format('otf'),
+	url('NEXT-Pan-Poster-Light.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'TheNextPanPoster';
+	src: local('TheNextPanPoster'),
+	url('NEXT-Pan-Poster-Light-Italic.woff') format('woff'),
+	url('NEXT-Pan-Poster-Light-Italic.otf') format('otf'),
+	url('NEXT-Pan-Poster-Light-Italic.woff2') format('woff2');
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'TheNextPanPosterMedium';
+	src: local('TheNextPanPoster'),
+	url('NEXT-Pan-Poster-Medium.woff') format('woff'),
+	url('NEXT-Pan-Poster-Medium.otf') format('otf'),
+	url('NEXT-Pan-Poster-Medium.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'TheNextPanPoster';
+	src: local('TheNextPanPoster'),
+	url('NEXT-Pan-Poster-Medium-Italic.woff') format('woff'),
+	url('NEXT-Pan-Poster-Medium-Italic.otf') format('otf'),
+	url('NEXT-Pan-Poster-Medium-Italic.woff2') format('woff2');
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'TheNextPanPoster';
+	src: local('TheNextPanPoster'),
+	url('NEXT-Pan-Poster-Regular.woff') format('woff'),
+	url('NEXT-Pan-Poster-Regular.otf') format('otf'),
+	url('NEXT-Pan-Poster-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
