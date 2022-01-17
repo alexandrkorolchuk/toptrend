@@ -1,0 +1,110 @@
+<section class="doctor-single">
+    <div class="doctor-single__background-image">
+        <picture>
+            {% if section.settings.background_image  %}
+                <img src="{{ section.settings.background_image | img_url: "master" }}" alt="{{ section.settings.background_image.alt }}">
+            {% endif %}
+        </picture>
+    </div>
+    <div class="container">
+        <div class="doctor-single__inner-wrapper">
+            <div class="doctor-single__content">
+                <div class="doctor-single__subtitle">
+                    {{ section.settings.subtitle }}
+                </div>
+                <h1 class="doctor-single__title">
+                    {{ section.settings.title }}
+                </h1>
+                <div class="doctor-single__text">
+                    {{ section.settings.text }}
+                </div>
+                <div class="doctor-single__button">
+                    <a href="{{ section.settings.button_url }}" class="btn btn--secondary" tabindex="0">
+                        {{ section.settings.button_text }} <i class="icon icon-i-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="doctor-single__image">
+                <picture>
+                    {% if section.settings.image %}
+                        <source srcset="{{ section.settings.image | img_url: "master" }}" media="(min-width: 768px)">
+                        {% if section.settings.mobile_image  %}
+                            <img src="{{ section.settings.mobile_image | img_url: "master" }}" alt="{{ section.settings.image.alt }}">
+                        {% else %}
+                            <img src="{{ section.settings.image | img_url: "master" }}" alt="{{ section.settings.image.alt }}">
+                        {% endif %}
+                    {% endif %}
+                </picture>
+            </div>
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+"name": "Doctor banner",
+"settings": [
+{
+"type": "header",
+"content": "Image"
+},
+{
+"type": "image_picker",
+"id": "background_image",
+"label": "Background image"
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Banner image"
+},
+{
+"type": "image_picker",
+"id": "mobile_image",
+"label": "Mobile banner image"
+},
+{
+"type": "header",
+"content": "Information"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Title",
+"default": "Title"
+},
+{
+"type": "text",
+"id": "subtitle",
+"label": "Subtitle",
+"default": "Subtitle"
+},
+{
+"type": "richtext",
+"id": "text",
+"label": "Description",
+"default": "<p>Description</p>"
+},
+{
+"type": "header",
+"content": "Link"
+},
+{
+"type": "text",
+"id": "button_text",
+"default": "Link",
+"label": "Link text"
+},
+{
+"type": "url",
+"id": "button_url",
+"label": "Link url",
+"info": "Leave the link url blank to hide the Link."
+}
+],
+"presets": [
+{
+"name": "Doctor banner"
+}
+]
+}
+{% endschema %}

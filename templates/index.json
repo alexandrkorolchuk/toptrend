@@ -127,8 +127,8 @@
         "power_by_logo": "shopify:\/\/shop_images\/engaging.png"
       }
     },
-    "main_page_ticker": {
-      "type": "main-page-ticker",
+    "Ticker": {
+      "type": "ticker",
       "blocks": {
         "ticker_item-1": {
           "type": "ticker_item",
@@ -185,6 +185,19 @@
       "settings": {
       }
     },
+    "Doctor_Banner": {
+      "type": "main-doctor-single",
+      "settings": {
+        "background_image": "shopify:\/\/shop_images\/bg_doctor_single.png",
+        "image": "shopify:\/\/shop_images\/dr_mallory.png",
+        "mobile_image": "shopify:\/\/shop_images\/dr_mallory_mob.png",
+        "title": "Dr. Mallory Blair, PhD",
+        "subtitle": "Meet The Founder",
+        "text": "<p>Scientist, professor, and mom of two, Dr. Blair’s innovations live at the intersection of nutrition, microfluidics, and biochemistry.<\/p>",
+        "button_text": "Get To know Mallory",
+        "button_url": "\/"
+      }
+    },
     "featured_products": {
       "type": "featured-collection",
       "settings": {
@@ -200,112 +213,14 @@
         "show_vendor": false,
         "show_rating": false
       }
-    },
-    "collage": {
-      "type": "collage",
-      "blocks": {
-        "video": {
-          "type": "video",
-          "settings": {
-            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-            "description": "Describe the video",
-            "image_padding": false
-          }
-        },
-        "product": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "second_image": false,
-            "image_padding": false,
-            "secondary_background": false
-          }
-        },
-        "collection": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "image_padding": false,
-            "color_scheme": "background-1"
-          }
-        }
-      },
-      "block_order": [
-        "video",
-        "product",
-        "collection"
-      ],
-      "settings": {
-        "heading": "Multimedia collage",
-        "desktop_layout": "left",
-        "mobile_layout": "collage"
-      }
-    },
-    "video": {
-      "type": "video",
-      "settings": {
-        "heading": "Video",
-        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-        "description": "",
-        "full_width": false
-      }
-    },
-    "multi_column": {
-      "type": "multicolumn",
-      "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3"
-      ],
-      "settings": {
-        "title": "Multicolumn",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "column_alignment": "left",
-        "background_style": "primary",
-        "button_label": "Button label",
-        "button_link": "",
-        "swipe_on_mobile": false
-      }
     }
   },
   "order": [
     "main_banner",
     "main_page_animation_banner",
     "main_page_discover",
-    "main_page_ticker",
-    "featured_products",
-    "video",
-    "collage",
-    "multi_column"
+    "Ticker",
+    "Doctor_Banner",
+    "featured_products"
   ]
 }
