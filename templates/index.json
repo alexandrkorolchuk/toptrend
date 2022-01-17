@@ -43,7 +43,8 @@
         "block_5": {
           "type": "image_item",
           "settings": {
-            "title": ""
+            "title": "",
+            "image": "shopify:\/\/shop_images\/bubble-img-5.png"
           }
         },
         "block_6": {
