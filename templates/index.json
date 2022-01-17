@@ -22,7 +22,8 @@
         "block_2": {
           "type": "image_item",
           "settings": {
-            "title": "This is a Nutristack liposome. Each bottle of 2x4 is made of millions of them."
+            "title": "This is a Nutristack liposome. Each bottle of 2x4 is made of millions of them.",
+            "image": "shopify:\/\/shop_images\/bubble-img-2.png"
           }
         },
         "block_3": {
