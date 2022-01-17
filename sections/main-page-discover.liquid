@@ -1,0 +1,306 @@
+<section class="discover">
+    <div class="container">
+        <div class="discover__inner ">
+            <div class="section-header">
+                <div class="section-header__title">
+                    {{ section.settings.title }}
+                </div>
+                <div class="section-header__description mobile-hide">
+                    {{ section.settings.text }}
+                </div>
+            </div>
+            <div class="discover__slider-wrap">
+                <div class="discover__slider js-discover-slider">
+                    {% for block in section.blocks %}
+                        <div>
+                            <div class="discover__grid">
+                                <div class="discover__grid-item">
+                                    <div class="discover__text">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             viewBox="0 0 550 140"  xml:space="preserve">
+											<path id="curve" d="M 0,100 C 40,100 80,80 110,50 C 150,10 280,10 330,50 S 500,100 550,50" stroke="transparent" fill="transparent"/>
+                                            <text>
+                                                <textPath id="text-path" href="#curve" startOffset="0" >
+                                                    {{ block.settings.image_title | prepend: '" '| append: '"' }}
+                                                </textPath>
+                                            </text>
+										</svg>
+                                    </div>
+                                    <div class="discover__image">
+                                        {% if block.settings.gradient-2 %}
+                                            <div class="discover__image__gradient--orange">
+                                                <img src="{{ block.settings.gradient-2 | img_url: "master" }}" alt="">
+                                            </div>
+                                        {% endif %}
+                                        {% if block.settings.gradient-1 %}
+                                            <div class="discover__image__gradient--violet">
+                                                <img src="{{ block.settings.gradient-1 | img_url: "master" }}" alt="">
+                                            </div>
+                                        {% endif %}
+                                        {% if block.settings.second_image %}
+                                            <div class="discover__image__table">
+                                                <img src="{{ block.settings.second_image | img_url: "master" }}" alt="">
+                                            </div>
+                                        {% endif %}
+                                        {% if block.settings.main_image %}
+                                            <div class="discover__image__img">
+                                                <img src="{{ block.settings.main_image | img_url: "master" }}" alt="">
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="discover__grid-item">
+                                    <div class="discover__content">
+                                        <div class="discover__content--title">
+                                            {{ block.settings.content_title }}
+                                        </div>
+                                        <div class="author discover__content--author">
+                                            {% if block.settings.doctor_image %}
+                                                <div class="author__image">
+                                                    <img src="{{ block.settings.doctor_image | img_url: "large" }}" alt="Author">
+                                                </div>
+                                            {% endif %}
+                                            <div class="author__info">
+                                                <div class="author__name">{{ block.settings.doctor_name }}</div>
+                                                <div class="author__specialization">{{ block.settings.doctore_specialization }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="discover__content--desc">
+                                            {{ block.settings.content_text }}
+                                        </div>
+                                        <ul class="discover__content--list">
+                                            <li>
+                                                {% if block.settings.list-item-1_image %}
+                                                    <img src="{{ block.settings.list-item-1_image | img_url: "compact" }}" alt="{{ block.settings.list-item-1_image.alt }}">
+                                                {% endif %}
+                                                <div class="discover__content--list__title">
+                                                    {{ block.settings.list-item-1_text }}
+                                                </div>
+                                            </li>
+                                            <li>
+                                                {% if block.settings.list-item-2_image %}
+                                                    <img src="{{ block.settings.list-item-2_image | img_url: "compact" }}" alt="{{ block.settings.list-item-2_image.alt }}">
+                                                {% endif %}
+                                                <div class="discover__content--list__title">
+                                                    {{ block.settings.list-item-2_text }}
+                                                </div>
+                                            </li>
+                                            <li>
+                                                {% if block.settings.list-item-3_image %}
+                                                    <img src="{{ block.settings.list-item-3_image | img_url: "compact" }}" alt="{{ block.settings.list-item-3_image.alt }}">
+                                                {% endif %}
+                                                <div class="discover__content--list__title">
+                                                    {{ block.settings.list-item-3_text }}
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="discover__slider-arrow">
+
+                </div>
+            </div>
+            <div class="section-header__description desktop-hide">
+                {{ section.settings.text }}
+            </div>
+            {% if section.settings.button_url %}
+                <div class="btn-wrap--center discover-btn-wrap">
+                    <a href="{{ section.settings.button_url }}" class="btn">{{ section.settings.button_text }}</a>
+                </div>
+            {% endif %}
+            <div class="powered powered--center">
+                <div class="powered__title">
+                    {{ section.settings.power_by_text }}
+                </div>
+                {% if section.settings.power_by_logo %}
+                    <a href="{{ section.settings.power_by_url }}" target="_blank" class="powered__logo">
+                        <img src="{{ section.settings.power_by_logo | img_url: "grande" }}" alt="logo">
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% schema %}
+{
+"name": "Main page discover",
+"settings": [
+{
+"type": "header",
+"content": "Text"
+},
+{
+"type": "text",
+"id": "title",
+"default": "Discover Your Solution",
+"label": "Title"
+},
+{
+"type": "richtext",
+"id": "text",
+"default": "<p>Take our <b>4-Minute Quiz</b> to get doctor & nutritionist recommended, custom solutions.</p>",
+"label": "Description"
+},
+{
+"type": "header",
+"content": "Button"
+},
+{
+"type": "text",
+"id": "button_text",
+"default": "Take the Quiz",
+"label": "Button text"
+},
+{
+"type": "url",
+"id": "button_url",
+"label": "Button url",
+"info": "Leave the link url blank to hide the Link."
+},
+{
+"type": "header",
+"content": "Powered By"
+},
+{
+"type": "text",
+"id": "power_by_text",
+"default":"Powered By:",
+"label": "Powered By Text"
+},
+{
+"type": "text",
+"id": "power_by_url",
+"default":"https://engaging.co",
+"label": "Powered By Url"
+},
+{
+"type": "image_picker",
+"id": "power_by_logo",
+"label": "Powered By Logo"
+}
+],
+"blocks": [
+{
+"type": "discover_item",
+"name": "Discover item",
+"settings": [
+{
+"type": "header",
+"content": "Item image content"
+},
+{
+"type": "text",
+"id": "image_title",
+"default": "I`m achieving new personal records",
+"label": "Image Title"
+},
+{
+"type": "image_picker",
+"id": "gradient-1",
+"label": "First gradient"
+},
+{
+"type": "image_picker",
+"id": "gradient-2",
+"label": "Second gradient"
+},
+{
+"type": "image_picker",
+"id": "main_image",
+"label": "Main Image"
+},
+{
+"type": "image_picker",
+"id": "second_image",
+"label": "Second Image"
+},
+{
+"type": "header",
+"content": "Item text content"
+},
+{
+"type": "text",
+"id": "content_title",
+"default": "Discover Your Solution",
+"label": " Title"
+},
+{
+"type": "richtext",
+"id": "content_text",
+"default": "<p>Take our <b>4-Minute Quiz</b> to get doctor & nutritionist recommended, custom solutions.</p>",
+"label": "Description"
+},
+{
+"type": "header",
+"content": "Doctor information"
+},
+{
+"type": "image_picker",
+"id": "doctor_image",
+"label": "Image"
+},
+{
+"type": "text",
+"id": "doctor_name",
+"default": "Name",
+"label": "Doctor Name"
+},
+{
+"type": "text",
+"id": "doctore_specialization",
+"default": "specialization",
+"label": "Doctor specialization"
+},
+{
+"type": "header",
+"content": "Content list"
+},
+{
+"type": "image_picker",
+"id": "list-item-1_image",
+"label": "Item-1 image"
+},
+{
+"type": "richtext",
+"id": "list-item-1_text",
+"default": "<p>text</p>",
+"label": "Item-1 text"
+},
+{
+"type": "image_picker",
+"id": "list-item-2_image",
+"label": "Item-2 image"
+},
+{
+"type": "richtext",
+"id": "list-item-2_text",
+"default": "<p>text</p>",
+"label": "Item-2 text"
+},
+{
+"type": "image_picker",
+"id": "list-item-3_image",
+"label": "Item-3 image"
+},
+{
+"type": "richtext",
+"id": "list-item-3_text",
+"default": "<p>text</p>",
+"label": "Item-3 text"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Discover"
+}
+]
+}
+{% endschema %}

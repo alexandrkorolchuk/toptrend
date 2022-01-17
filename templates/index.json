@@ -67,6 +67,66 @@
         "title": ""
       }
     },
+    "Main page discover": {
+      "type": "main-page-discover",
+      "blocks": {
+        "block_1": {
+          "type": "discover_item",
+          "settings": {
+            "image_title": "I`m achieving new personal records",
+            "gradient-1": "shopify:\/\/shop_images\/discover_gradient_violet.png",
+            "gradient-2": "shopify:\/\/shop_images\/discover_gradient_orange.png",
+            "main_image": "shopify:\/\/shop_images\/discover_img_1.jpg",
+            "second_image": "shopify:\/\/shop_images\/discover_table_1.png",
+            "content_title": "Keith's Custom Nutrition Solution",
+            "content_text": "<p>Hi Keith, our analysis shows you might need more vitamin D due to your lack of sun exposure, as well as help maintaining healthy blood pressure and cholesterol levels. Here are some solutions that can help you maintain great general health and help you reach your fitness goals: <\/p>",
+            "doctor_image": "shopify:\/\/shop_images\/author.png",
+            "doctor_name": "Dr Miller, ND",
+            "doctore_specialization": "2x4 Nutritionist",
+            "list-item-1_image": "shopify:\/\/shop_images\/discover_icon_1.png",
+            "list-item-1_text": "<p><a href=\"\/products\/2x4-immune-strength\" title=\"2x4 Immune Strength™\">Immune Strength<\/a> to provide Vitamin D as well as bone heath, heart health and weight management support<\/p>",
+            "list-item-2_image": "shopify:\/\/shop_images\/discover_icon_2.png",
+            "list-item-2_text": "<p><a href=\"\/products\/2x4-natural-energy\" title=\"2x4 Natural Energy™\">Natural Energy<\/a> to help promote red blood cell production and to help build antibodies used for immunity support<\/p>",
+            "list-item-3_image": "shopify:\/\/shop_images\/discover_icon_3.png",
+            "list-item-3_text": "<p><a href=\"\/products\/2x4-heart-health\" title=\"2x4 Heart Health™\">Heart Health<\/a> To provide powerful antioxidant support and boost your energy levels before, during, and after exercise <\/p>"
+          }
+        },
+        "block_2": {
+          "type": "discover_item",
+          "settings": {
+            "image_title": "I'm achieving new personal records",
+            "gradient-1": "shopify:\/\/shop_images\/discover_gradient_violet.png",
+            "gradient-2": "shopify:\/\/shop_images\/discover_gradient_orange.png",
+            "main_image": "shopify:\/\/shop_images\/Screen_Shot_2021-08-02_at_8.41_2_2049ff73-7592-4c8f-b61e-9b35aa3cdc65.png",
+            "second_image": "shopify:\/\/shop_images\/discover_table_1.png",
+            "content_title": "Jane's Custom Nutrition Solution",
+            "content_text": "<p>Jane, it sounds like you need more sun, and you’re having issues with your immunity. Here are some recommendations: <\/p>",
+            "doctor_image": "shopify:\/\/shop_images\/author.png",
+            "doctor_name": "Dr. Name Here",
+            "doctore_specialization": "MD, PHD",
+            "list-item-1_image": "shopify:\/\/shop_images\/discover_icon_1.png",
+            "list-item-1_text": "<p><a href=\"\/\" target=\"_blank\" title=\"\/\">Vitamin B12<\/a>   for healthy & blood cells<\/p>",
+            "list-item-2_image": "shopify:\/\/shop_images\/discover_icon_2.png",
+            "list-item-2_text": "<p><a href=\"\/\" target=\"_blank\" title=\"\/\">DHEA<\/a>   for Performance enhancement<\/p>",
+            "list-item-3_image": "shopify:\/\/shop_images\/discover_icon_3.png",
+            "list-item-3_text": "<p><a href=\"\/\" target=\"_blank\" title=\"\/\">Vitamin B12<\/a>   for healthy & blood cells<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2"
+      ],
+      "settings": {
+        "title": "Discover Your Solution",
+        "text": "<p>Take our 5-minute quiz to get custom, doctor & nutritionist recommended solutions<\/p>",
+        "button_text": "Take the Quiz",
+        "button_url": "\/",
+        "power_by_text": "Powered By:",
+        "power_by_url": "\/",
+        "power_by_logo": "shopify:\/\/shop_images\/engaging.png"
+      }
+    },
     "featured_products": {
       "type": "featured-collection",
       "settings": {
@@ -129,9 +189,10 @@
   "order": [
     "main_banner",
     "main_page_animation_banner",
+    "main-page-discover",
     "featured_products",
-    "collage",
     "video",
+    "collage",
     "multi_column"
   ]
 }
