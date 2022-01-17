@@ -67,7 +67,7 @@
         "title": ""
       }
     },
-    "Main page discover": {
+    "main_page_discover": {
       "type": "main-page-discover",
       "blocks": {
         "block_1": {
@@ -243,7 +243,7 @@
   "order": [
     "main_banner",
     "main_page_animation_banner",
-    "main-page-discover",
+    "main_page_discover",
     "featured_products",
     "video",
     "collage",
