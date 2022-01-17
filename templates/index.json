@@ -50,7 +50,8 @@
         "block_6": {
           "type": "image_item",
           "settings": {
-            "title": "Nutristack allows nutrients to absorb 15x better than gummies and tablets. This means 2x4 supplements actually work."
+            "title": "Nutristack allows nutrients to absorb 15x better than gummies and tablets. This means 2x4 supplements actually work.",
+            "image": "shopify:\/\/shop_images\/bubble-img-6.png"
           }
         }
       },
