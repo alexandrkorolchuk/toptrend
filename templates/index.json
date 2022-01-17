@@ -15,7 +15,8 @@
         "block_1": {
           "type": "image_item",
           "settings": {
-            "title": "A supplement in a hyper-absorbant bubble."
+            "title": "A supplement in a hyper-absorbant bubble.",
+            "image": "shopify:\/\/shop_images\/bubble-img-1.png"
           }
         },
         "block_2": {
