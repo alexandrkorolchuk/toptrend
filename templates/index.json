@@ -1,53 +1,71 @@
 {
   "sections": {
-    "image_banner": {
+    "main_banner": {
       "type": "main-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Talk about your brand"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
-            "button_label_2": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
       "settings": {
-        "desktop_content_position": "middle-center"
+        "gradient": "shopify:\/\/shop_images\/Mask_Group_69ffbefe-2f8d-4495-9292-9db15c95b2f1.png",
+        "title": "The Next Wave in Vitamin Absorption.",
+        "button_text": "Shop Bundles",
+        "button_url": "shopify:\/\/collections"
       }
     },
-    "rich_text": {
-      "type": "rich-text",
+    "main_page_animation_banner": {
+      "type": "main-page-animation-banner",
       "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {}
+        "block_1": {
+          "type": "image_item",
+          "settings": {
+            "title": "A supplement in a hyper-absorbant bubble.",
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2021-12-29_at_7.38.03_PM.png"
+          }
         },
-        "text": {
-          "type": "text",
-          "settings": {}
+        "block_2": {
+          "type": "image_item",
+          "settings": {
+            "title": "This is a Nutristack liposome. Each bottle of 2x4 is made of millions of them.",
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2021-12-29_at_7.38.06_PM.png"
+          }
         },
-        "button": {
-          "type": "button",
-          "settings": {}
+        "block_3": {
+          "type": "image_item",
+          "settings": {
+            "title": "",
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2021-12-29_at_7.38.08_PM.png"
+          }
+        },
+        "block_4": {
+          "type": "image_item",
+          "settings": {
+            "title": "Inside are microscopic supplements that absorb immediately into your bloodstream.",
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2021-12-29_at_7.38.01_PM.png"
+          }
+        },
+        "block_5": {
+          "type": "image_item",
+          "settings": {
+            "title": "",
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2021-12-29_at_7.38.10_PM.png"
+          }
+        },
+        "block_6": {
+          "type": "image_item",
+          "settings": {
+            "title": "Nutristack allows nutrients to absorb 15x better than gummies and tablets. This means 2x4 supplements actually work.",
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2021-12-29_at_7.38.18_PM.png"
+          }
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "button"
+        "block_1",
+        "block_2",
+        "block_3",
+        "block_4",
+        "block_5",
+        "block_6"
       ],
-      "settings": {}
+      "settings": {
+        "title": ""
+      }
     },
     "featured_products": {
       "type": "featured-collection",
@@ -109,8 +127,8 @@
     }
   },
   "order": [
-    "image_banner",
-    "rich_text",
+    "main_banner",
+    "main_page_animation_banner",
     "featured_products",
     "collage",
     "video",

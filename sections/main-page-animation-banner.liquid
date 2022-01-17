@@ -1,0 +1,66 @@
+<section class="supplement">
+    <div class="container">
+        <div class="section-header__title">
+            {{ section.settings.title }}
+        </div>
+        <div class="supplement-list">
+            {% for block in section.blocks %}
+            <div id="supplement-{{ forloop.index }}" class="supplement-box">
+                {% if block.settings.image %}
+                    <div class="supplement-box__img">
+                        <picture>
+                            {% if block.settings.image %}
+                                <source srcset="{{ block.settings.image | img_url: "master" }}">
+                                <img src="{{ block.settings.image | img_url: "master" }}" alt="{{ block.settings.image.alt }}">
+                            {% endif %}
+                        </picture>
+                    </div>
+                    <div class="supplement-box__title">{{ block.settings.title }}</div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <!--				<div class="btn-wrap btn-wrap&#45;&#45;center">-->
+        <!--					<a href="javascript:void(0)" class="btn btn&#45;&#45;secondary">-->
+        <!--						See how we compare-->
+        <!--						<i class="icon icon-i-arrow-right"></i>-->
+        <!--					</a>-->
+        <!--				</div>-->
+    </div>
+</section>
+{% schema %}
+{
+"name": "Banner with animation",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Title",
+"default": "What's better than a supplement?"
+}
+],
+"blocks": [
+{
+"type": "image_item",
+"name": "Image item",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Title"
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Banner with animation"
+}
+]
+}
+{% endschema %}
