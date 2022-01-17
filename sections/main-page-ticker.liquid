@@ -1,0 +1,44 @@
+{% assign text = page.metafields.ticker.title %}
+{% assign blocks_size = page.metafields.ticker.title | size %}
+{% if blocks_size == 1 %}
+    {% assign blocks_size = blocks_size %}
+    {% assign original_size = blocks_size %}
+{% else %}
+    {% assign blocks_size = blocks_size | minus:1 %}
+{% endif %}
+
+{% assign show = page.metafields.ticker.show%}
+
+{% if blocks_size > 0 and show =="true" %}
+    <div class="ticker__viewport" id="ticker">
+        <ul class="ticker__list" data-ticker="list">
+            {% for i in (0..blocks_size) %}
+                <li class="ticker__item" data-ticker="item">{{ text[i] }}</li>
+                {% if original_size == 1 %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+{% schema %}
+{
+"name": "Ticker",
+"settings": [
+{
+"type": "paragraph",
+"content": "Customize this block in Metafields & Custom Fields app"
+},
+{
+"type": "header",
+"content": "Block id"
+},
+{
+"type": "paragraph",
+"content": "main-page-ticker"
+}
+],
+"blocks": [
+]
+}
+{% endschema %}

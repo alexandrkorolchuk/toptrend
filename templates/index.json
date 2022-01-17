@@ -127,6 +127,64 @@
         "power_by_logo": "shopify:\/\/shop_images\/engaging.png"
       }
     },
+    "main_page_ticker": {
+      "type": "main-page-ticker",
+      "blocks": {
+        "ticker_item-1": {
+          "type": "ticker_item",
+          "settings": {
+            "text": "Nutrition Multiplied"
+          }
+        },
+        "ticker_item-2": {
+          "type": "ticker_item",
+          "settings": {
+            "text": "Exponentially Better Supplements"
+          }
+        },
+        "ticker_item-3": {
+          "type": "ticker_item",
+          "settings": {
+            "text": "Nutrition Multiplied"
+          }
+        },
+        "ticker_item-4": {
+          "type": "ticker_item",
+          "settings": {
+            "text": "15x more effective"
+          }
+        },
+        "ticker_item-5": {
+          "type": "ticker_item",
+          "settings": {
+            "text": "Nutrition Multiplied"
+          }
+        },
+        "ticker_item-6": {
+          "type": "ticker_item",
+          "settings": {
+            "text": "Exponentially Better Supplements"
+          }
+        },
+        "ticker_item-7": {
+          "type": "ticker_item",
+          "settings": {
+            "text": "15x more effective"
+          }
+        }
+      },
+      "block_order": [
+        "ticker_item-1",
+        "ticker_item-2",
+        "ticker_item-3",
+        "ticker_item-4",
+        "ticker_item-5",
+        "ticker_item-6",
+        "ticker_item-7"
+      ],
+      "settings": {
+      }
+    },
     "featured_products": {
       "type": "featured-collection",
       "settings": {
@@ -244,6 +302,7 @@
     "main_banner",
     "main_page_animation_banner",
     "main_page_discover",
+    "main_page_ticker",
     "featured_products",
     "video",
     "collage",
