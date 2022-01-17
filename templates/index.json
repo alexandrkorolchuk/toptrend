@@ -29,13 +29,15 @@
         "block_3": {
           "type": "image_item",
           "settings": {
-            "title": ""
+            "title": "",
+            "image": "shopify:\/\/shop_images\/bubble-img-3.png"
           }
         },
         "block_4": {
           "type": "image_item",
           "settings": {
-            "title": "Inside are microscopic supplements that absorb immediately into your bloodstream."
+            "title": "Inside are microscopic supplements that absorb immediately into your bloodstream.",
+            "image": "shopify:\/\/shop_images\/bubble-img-4.png"
           }
         },
         "block_5": {
