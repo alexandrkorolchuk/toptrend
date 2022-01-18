@@ -311,10 +311,7 @@
     "Recently_Viewed": {
       "type": "td-recently-viewed",
       "settings": {
-        "title": "Recently Viewed",
-        "collection": "products",
-        "products_to_show": 6,
-        "show_view_all": true
+        "title": "Recently Viewed"
       }
     }
   },
