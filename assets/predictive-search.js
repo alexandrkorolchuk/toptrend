@@ -5,7 +5,8 @@ class PredictiveSearch extends HTMLElement {
     this.input = this.querySelector('input[type="search"]');
     this.predictiveSearchResults = this.querySelector('[data-predictive-search]');
     this.isOpen = false;
-
+    this.search_type = this.input.getAttribute('data-search-type');
+    console.log(this.search_type)
     this.setupEventListeners();
   }
 
@@ -128,7 +129,7 @@ class PredictiveSearch extends HTMLElement {
       return;
     }
 
-    fetch(`${routes.predictive_search_url}?q=${encodeURIComponent(searchTerm)}&${encodeURIComponent('resources[type]')}=product&${encodeURIComponent('resources[limit]')}=4&section_id=predictive-search`)
+    fetch(`${routes.predictive_search_url}?q=${encodeURIComponent(searchTerm)}&${encodeURIComponent('resources[type]')}=${this.search_type}&${encodeURIComponent('resources[limit]')}=4&section_id=predictive-search`)
       .then((response) => {
         if (!response.ok) {
           var error = new Error(response.status);

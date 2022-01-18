@@ -1,0 +1,244 @@
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+<div id="CartDrawer" class="ajaxcart-popup">
+    <div class="ajaxcart__header">
+        <div class="ajaxcart__header-info">
+            You have <span class="ajaxcart__header-count js-ajaxcart-count">{{ cart.item_count }}</span> items in your bag
+        </div>
+
+        <span class="ajaxcart__header-close js-ajaxcart-close">
+				<i class="icon icon-i-close"></i>
+			</span>
+    </div>
+  {% if section.settings.free-shiping != blank %}
+    <div class="ajaxcart-line bg--black" data-value="{{ section.settings.free-shiping }}">
+        <div class="ajaxcart-line__logo">
+            <img src="{{ 'car.svg' | asset_url }}" alt="car">
+        </div>
+        <div class="ajaxcart-line__content">
+            {% assign free_siping-total_price = section.settings.free-shiping | abs %}
+            {% assign cart-total_price = cart.total_price | money_without_currency | abs%}
+            {% assign percent = cart-total_price | times:100 %}
+            {% assign percent = percent | divided_by:free_siping-total_price %}
+            {% assign free_siping-price = free_siping-total_price | minus:cart-total_price %}
+            <div class="ajaxcart-line__text">
+                {% if free_siping-total_price > cart-total_price %}
+                    You’re ${{ free_siping-price }} away from FREE SHIPPING!
+                {% else %}
+                     FREE SHIPPING!
+                {% endif %}
+            </div>
+            <div class="ajaxcart-line__item">
+                <span style="width: {{ percent }}%;"></span>
+            </div>
+        </div>
+    </div>
+  {% endif %}
+    <div id="CartContainer">
+        <form action="/cart" method="post" class="cart ajaxcart" id="cart">
+            <div class="ajaxcart__inner">
+                <div class="ajaxcart__inner-content">
+                {% if cart.item_count >0 %}
+                {%- for item in cart.items -%}
+                <div class="ajaxcart__product" id="CartItem-{{ item.index | plus: 1 }}">
+                    {% if item.image %}
+                    <a href="{{ item.url }}" class="ajaxcart__product-image">
+                        <img src="{{ item.image | img_url: '300x' }}" alt="{{ item.image.alt | escape }}">
+                    </a>
+                    {% endif %}
+                    <div class="ajaxcart__product-content">
+                        <div class="ajaxcart-content__top">
+                            <div class="ajaxcart-content__name-wrap">
+                                <a href="{{ item.url }}" class="ajaxcart-content__name">{{ item.product.title | escape }}</a>
+                            </div>
+                            <div class="ajaxcart-content__price_wrap">
+										<span class="ajaxcart-content__price">
+											{{ item.final_price | money }}
+										</span>
+                            </div>
+                            <span class="ajaxcart-content__desc">{{  item.product.metafields.product.short_description }}</span>
+                        </div>
+                        <div class="ajaxcart-content__bottom">
+                            <div class="ajaxcart-content__subscription_wrap">
+                                <div class="ajaxcart-content__subscription_title">
+                                    Subscription
+                                </div>
+                                <div class="ajaxcart-content__subscription_text">
+                                    Frequency: 2 months
+                                </div>
+                            </div>
+                            <div class="ajaxcart__qty_wrap">
+                                <a href="javascript:void(0);" class="ajaxremove"
+                                   data-line="{{ item.index | plus: 1 }}">Remove</a>
+                                <quantity-input class="quantity-block ajaxcart__qty">
+                                    <button class="ajaxcart__qty-adjust ajaxcart__qty--plus quantity-increment" name="minus" type="button">
+                                        -
+                                    </button>
+                                    <input class="input-quantity ajaxcart__qty-num"
+                                           type="number"
+                                           name="quantity"
+                                           min="1"
+                                           value="{{ item.quantity }}"
+                                           pattern="[0-9]*"
+                                           data-line="{{ item.index | plus: 1 }}"
+                                    >
+                                    <button class="ajaxcart__qty-adjust ajaxcart__qty--minus quantity-increment" name="plus" type="button">
+                                        +
+                                    </button>
+                                </quantity-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="ajaxcart-total">
+                    <div class="ajaxcart-total__row">
+                        <div class="ajaxcart-total__col">
+                           {{ section.settings.item_subtotal }}
+                        </div>
+                        <div class="ajaxcart-total__col">
+                            {{ cart.total_price | money }}
+                        </div>
+                    </div>
+                    <div class="ajaxcart-total__row">
+                        <div class="ajaxcart-total__col">
+                           {{ section.settings.item_shiping_sale }}
+                        </div>
+                        <div class="ajaxcart-total__col">
+                            -
+                        </div>
+                    </div>
+                    <div class="ajaxcart-total__info">
+                        {{ section.settings.item_info }}
+                    </div>
+                </div>
+                {% else %}
+                <div class="ajaxcart-empty">
+                    <div class="ajaxcart-empty__title">
+                        {{ section.settings.empty_title }}
+                    </div>
+                    <div class="ajaxcart-empty__desc">
+                        {{ section.settings.empty_desc }}
+                    </div>
+                    <div class="ajaxcart-empty__btn-wrap">
+                        <a href="{{ routes.all_products_collection_url }}" class="btn ajaxcart-empty__btn">{{ section.settings.empty_btn }}</a>
+                    </div>
+
+                </div>
+                {% endif %}
+                </div>
+                {% if shop.metafields.cart_recomendation.product != blank %}
+                    <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+                <div class="products-feature products-feature--ajaxcart" >
+                    <div class="products-feature__inner">
+                        <div class="section-header">
+                            <div class="section-header__title">
+                                {{shop.metafields.cart_recomendation.title}}
+                            </div>
+                        </div>
+                        <div class="products-feature__grid-wrap">
+                            <div class="grid products-feature__grid products-feature__grid--slider js-ajaxcart-products-slider">
+                                {% assign product_recomendation = shop.metafields.cart_recomendation.product | split: '|' %}
+                                {% for handle in product_recomendation %}
+                                    {% render 'product-card',product_card_product:all_products[handle], type: "cart" %}
+                                {% endfor %}
+                            </div>
+                            <div class="js-ajaxcart-products-slider-arrow"></div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="ajaxcart__footer ">
+                <div class="ajaxcart-info" style="display: none">
+                    <div class="ajaxcart-info__inner">
+                        <a href="javascript:void(0);" class="ajaxcart-info__plus">
+                            <span>+</span>
+                        </a>
+                        <div class="ajaxcart-info__text">
+                            Add 1 more item to save 15% on your entire order!
+                        </div>
+                    </div>
+                </div>
+                <div class="ajaxcart__footer_inner">
+                    <div class="ajaxcart-subtotal">
+                        <div class="ajaxcart-subtotal__text">{{ section.settings.footer_subtotal }}</div>
+                        <div class="ajaxcart-subtotal__money"><span class=money>{{ cart.total_price | money }}</span></div>
+                    </div>
+                    <div class="ajaxcart__btn-wrap">
+                        {% comment %}<a class="btn btn--cart ajaxcart__btn" href="javascript:void(0);">Checkout</a>{% endcomment %}
+                        <button type="submit" id="checkout" class="btn btn--cart ajaxcart__btn" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+                            {{ 'sections.cart.checkout' | t }}
+                        </button>
+                        <a href="{{ routes.all_products_collection_url }}" class="btn btn--secondary ajaxcart__btn-continue"> {{ 'general.continue_shopping' | t }}<i
+                                    class="icon icon-i-arrow-right"></i></a>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+{% schema %}
+{
+"name": "Cart Drawer",
+"settings": [
+{
+"type": "text",
+"id": "free-shiping",
+"label": "Free shiping price"
+},
+{
+"type": "header",
+"content": "Cart text"
+},
+{
+"type": "text",
+"id": "item_subtotal",
+"label": "Cart item subtotal text",
+"default": "Subtotal"
+},
+{
+"type": "richtext",
+"id": "item_shiping_sale",
+"label": "Cart item shiping and discount inforamtion",
+"default": "<p>Shipping and Sales Tax</p>"
+},
+{
+"type": "text",
+"id": "item_info",
+"label": "Cart item info text",
+"default": "Calculated At Checkout"
+},
+{
+"type": "text",
+"id": "footer_subtotal",
+"label": "Cart footer subtotal text",
+"default": "Estimated Total"
+},
+{
+"type": "header",
+"content": "Empty cart text"
+},
+{
+"type": "richtext",
+"id": "empty_title",
+"label": "Empty cart title",
+"default": "<p> Oops! <br>Your bag is empty!</p>"
+},
+{
+"type": "richtext",
+"id": "empty_desc",
+"label": "Empty cart description",
+"default": "<p>Looks like you haven’t added anything to your bag yet</p>"
+},
+{
+"type": "text",
+"id": "empty_btn",
+"label": "Empty cart button text",
+"default": "Shop Now"
+}
+]
+}
+{% endschema %}
