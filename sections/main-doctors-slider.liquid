@@ -1,0 +1,204 @@
+<section class="doctors">
+    <div class="container">
+        <div class="doctors__inner">
+            <div class="section-header">
+                <div class="section-header__subtitle">
+                    {{ section.settings.subtitle }}
+                </div>
+                <div class="section-header__title">
+                    {{ section.settings.title }}
+                </div>
+                <div class="section-header__description">
+                    {{ section.settings.text }}
+                </div>
+            </div> {% for block in section.blocks %}
+            {% endfor%}
+
+            <div class="doctors__grid-wrap">
+                <div class="grid js-doctors-slider">
+                    {% for block in section.blocks %}
+                        {% if  block.settings.page.title != blank %}
+                            <div class="grid__item grid__item--25 doctors__item">
+                                <div class="doctors__image">
+                                    {% if block.settings.page.metafields.doctor.img %}
+                                        <img src="{{ block.settings.page.metafields.doctor.img }}" alt="{{  block.settings.page.metafields.doctor.name }}">
+                                    {% else %}
+                                        {{ 'product-1' | placeholder_svg_tag }}
+                                    {% endif %}
+
+                                    <div data-toggle="modal" data-target="#doctors_modal" class="el-plus js-el-plus"><span>+</span></div>
+
+                                </div>
+                                <div class="doctors__content">
+                                    <div class="doctors__name">
+                                        {{  block.settings.page.metafields.doctor.name }}
+                                    </div>
+                                    <div class="doctors__specialization">
+                                        {{ block.settings.page.metafields.doctor.specialization }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="doctors__slider-arrow"></div>
+            </div>
+            <div class="btn-wrap btn-wrap--center">
+                <a href="{{ section.settings.button_url }}" class="btn  btn--secondary">
+                    <span class="mobile-hide">{{ section.settings.button_text }}</span>
+                    <span class="desktop-hide">{{ section.settings.button_mobile_text }}</span>
+                    <i
+                            class="icon icon-i-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal fade doctors_modal" id="doctors_modal" tabindex="-1" role="dialog"
+     aria-labelledby="doctors_modalTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content trending-modal__inner">
+            <div class="modal-header">
+                <h5 class="modal-title trending__title">{{ section.settings.poup_title }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">
+							<i class="icon icon-i-close"></i>
+						</span>
+                </button>
+            </div>
+            <div class="modal-body doctors-modal__content">
+                <div class="doctors__grid-wrap doctors-modal__slider-wrap">
+                    <div class="doctors-modal__slider js-modal-doctors-slider">
+                        {% for block in section.blocks %}
+                            {% if  block.settings.page.title != blank %}
+                                <div>
+                                    <div class="grid__item doctors__item">
+                                        <div class="doctors__image">
+                                            {% if block.settings.page.metafields.doctor.img %}
+                                                <img src="{{ block.settings.page.metafields.doctor.img }}" alt="{{  block.settings.page.metafields.doctor.name }}">
+                                            {% else %}
+                                                {{ 'product-1' | placeholder_svg_tag }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="doctors__content">
+                                            <div class="doctors__name">
+                                                {{  block.settings.page.metafields.doctor.name }}
+                                            </div>
+                                            <div class="doctors__specialization">
+                                                {{ block.settings.page.metafields.doctor.specialization }}
+                                            </div>
+                                            <div class="doctors__desc">
+                                                {{ block.settings.page.metafields.doctor.description | strip_html  }}
+                                            </div>
+                                            <div class="doctors__position-title">
+                                                {{ block.settings.page.metafields.doctor.position-title }}
+                                            </div>
+                                            <div class="doctors__position">
+                                                {{ block.settings.page.metafields.doctor.position }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn-wrap btn-wrap--center">
+                                        <a href="{{ block.settings.page.url }}" class="btn  btn--secondary">
+                                            <span>{{ section.settings.poup_button_text }}</span>
+                                            <i class="icon icon-i-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                    <div class="doctors-modal__slider-arrow"></div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+"name": "Doctors slider",
+"settings": [
+{
+"type": "header",
+"content": "Text"
+},
+{
+"type": "text",
+"id": "title",
+"default": "Titile",
+"label": "Title"
+},
+{
+"type": "richtext",
+"id": "text",
+"default": "<p>Description</p>",
+"label": "Description"
+},
+{
+"type": "text",
+"id": "subtitle",
+"default": "Subtitle",
+"label": "Subtitle"
+},
+{
+"type": "header",
+"content": "Link"
+},
+{
+"type": "text",
+"id": "button_text",
+"default": "Link",
+"label": "Link text"
+},
+{
+"type": "text",
+"id": "button_mobile_text",
+"default": "Link",
+"label": "Link mobile text"
+},
+{
+"type": "url",
+"id": "button_url",
+"label": "Link url",
+"info": "Leave the link url blank to hide the Link."
+},
+{
+"type": "header",
+"content": "Popup"
+},
+{
+"type": "text",
+"id": "poup_title",
+"default": "Title",
+"label": "Popup title"
+},
+{
+"type": "text",
+"id": "poup_button_text",
+"default": "read more",
+"label": "Popup Link text"
+}
+],
+"blocks": [
+{
+"type": "doctor",
+"name": "Doctors",
+"settings": [
+{
+"type": "page",
+"id": "page",
+"label": "Page"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Doctors slider"
+}
+]
+}
+{% endschema %}

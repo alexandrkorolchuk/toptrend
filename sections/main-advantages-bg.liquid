@@ -1,0 +1,132 @@
+<section class="advantages bg--black">
+    <div class="container">
+        <div class="advantages__inner">
+            <div class="section-header">
+                <div class="section-header__title">
+                    {{ section.settings.title }}
+                </div>
+                <div class="section-header__description">
+                    {{ section.settings.subtitle }}
+                </div>
+            </div>
+            <div class="advantages__list">
+                {% for block in section.blocks %}
+                    <div class="advantages__item">
+                        {% if block.settings.image %}
+                            <div class="advantages__image">
+                                <!--								<img src="img/advantages_1.svg" alt="advantages">-->
+                                <img src="{{ block.settings.image | img_url:"grande" }}" alt="{{ block.settings.image.alt }}">
+                            </div>
+                        {% endif %}
+                        <div class="advantages__content">
+                            <div class="advantages__label">
+                                {{ block.settings.title }}
+                            </div>
+                            <div class="advantages__text">
+                                {{ block.settings.text }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if section.settings.button_url  %}
+                <div class="btn-wrap section-button section-button--center">
+                    <a href="{{ section.settings.button_url }}" class="btn btn--medium advantages__link">{{ section.settings.button_text }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+"name": "Quiz banner",
+"max_blocks": 4,
+"settings": [
+{
+"type": "header",
+"content": "Text"
+},
+{
+"type": "text",
+"id": "title",
+"default": "Take The Quiz",
+"label": "Title"
+},
+{
+"type": "text",
+"id": "subtitle",
+"default": "Designed by Doctors & Nutrition Experts",
+"label": "Subtitle"
+},
+{
+"type": "header",
+"content": "Link"
+},
+{
+"type": "text",
+"id": "button_text",
+"default": "Link",
+"label": "Button text"
+},
+{
+"type": "url",
+"id": "button_url",
+"label": "Button url",
+"info": "Leave the link url blank to hide the Link."
+}
+],
+"blocks": [
+{
+"type": "info_item",
+"name": "information item",
+"settings": [
+{
+"type": "header",
+"content": "Image"
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image/Gif"
+},
+{
+"type": "header",
+"content": "Text"
+},
+{
+"type": "text",
+"id": "title",
+"default": "Title",
+"label": "Title"
+},
+{
+"type": "textarea",
+"id": "text",
+"default": "Text information",
+"label": "Text information"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Quiz banner",
+"blocks":[
+{
+"type": "info_item"
+},
+{
+"type": "info_item"
+},
+{
+"type": "info_item"
+},
+{
+"type": "info_item"
+}
+]
+}
+]
+}
+{% endschema %}
