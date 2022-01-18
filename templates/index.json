@@ -303,7 +303,16 @@
       "type": "main-featured-collection",
       "settings": {
         "title": "Popular Solutions",
-        "collection": "2x4-products",
+        "collection": "products",
+        "products_to_show": 6,
+        "show_view_all": true
+      }
+    },
+    "Recently_Viewed": {
+      "type": "td-recently-viewed",
+      "settings": {
+        "title": "Recently Viewed",
+        "collection": "products",
         "products_to_show": 6,
         "show_view_all": true
       }
@@ -317,6 +326,7 @@
     "Doctor_Banner",
     "Doctors_slider",
     "Quiz",
-    "Feature_Collection"
+    "Feature_Collection",
+    "Recently_Viewed"
   ]
 }
