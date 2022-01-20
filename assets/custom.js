@@ -56,6 +56,15 @@ $(document).ready(function (){
     $(".input-quantity:not(.ajaxcart__qty-num)").on("change",function (){
         $(".product-add-form").find($('[name="quantity"]'))[0].value=this.value;
     });
+    $('.button_triger_add-to-cart').on("click",function (){
+        $(".product-add-form").find($('.form__succsess')).trigger('click');
+        $(this)[0].innerHTML="Added To Bag"
+        let _this= $(this);
+        setTimeout(function (){
+            _this[0].innerHTML="Add To Bag"
+        }, 2000)
+    });
+    $('.js-subscribe-select').select2({dropdownPosition:'below',minimumResultsForSearch:-1})
     $(".js-scrol-to-img").on("click",function (){
         let block_id= $(this).attr('data-id'),
         slide_to=$('.pdp__images').find($(`#${block_id}`)).parent().attr('data-slick-index');
@@ -101,6 +110,29 @@ $(document).ready(function (){
                 $('.main-faq__box--body .accordion:nth-of-type(6)').prevAll().removeClass("hidden");
                 $('.main-faq__box--body .panel:nth-of-type(6)').nextAll().addClass("hidden");
                 $('.main-faq__box--body .panel:nth-of-type(6)').prevAll().removeClass("hidden");
+                button.click();
+            });
+        },200)
+
+    });
+
+    /*--- Ingredients Search --*/
+    $('.js-input-ingredients-search').on('input focus', function () {
+        setTimeout(function (){
+            $('.input-search__list ul li').on('click', function (e){
+                let title = $(this).attr('data-ingredients');
+                $('.input-search__field input').val(title);
+                let button = $('.main-ingredients__box--body').find($($(`[data-ingredients-title="${title}"]`)));
+                let button_id = button.attr('data-ingredients-header-qt')
+                let text = $('.main-ingredients__box--body').find($($(`[data-ingredients-body-qt="${button_id}"]`)));
+                $('.main-ingredients__box--body').prepend(text);
+                $('.main-ingredients__box--body').prepend(button);
+                $('.main-ingredients__box--body .accordion').removeClass('active');
+                $('.main-ingredients__box--body .panel').removeAttr('style');
+                $('.main-ingredients__box--body .accordion:nth-of-type(6)').nextAll().addClass("hidden");
+                $('.main-ingredients__box--body .accordion:nth-of-type(6)').prevAll().removeClass("hidden");
+                $('.main-ingredients__box--body .panel:nth-of-type(6)').nextAll().addClass("hidden");
+                $('.main-ingredients__box--body .panel:nth-of-type(6)').prevAll().removeClass("hidden");
                 button.click();
             });
         },200)

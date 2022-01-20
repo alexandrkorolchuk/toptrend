@@ -1,0 +1,184 @@
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<section class="trending {% if template.name contains "collection" %}trending--category{% endif %}">
+    <div class="container">
+        <div class="trending__inner">
+            <div class="section-header">
+                <div class="section-header__title">
+                    {{ section.settings.title }}
+                </div>
+            </div>
+            <div class="trending__grid-wrap">
+                <div class="grid js-trending-slider">
+                    {% for block in section.blocks %}
+                        <div class="grid__item grid__item--33 trending__item">
+                            <div class="trending__image">
+                                {% if block.settings.image %}
+                                    <img src="{{ block.settings.image | img_url: "master"}}" alt="{{ block.settings.image.alt  }}">
+                                {% else %}
+                                    {{ 'image' | placeholder_svg_tag }}
+                                {% endif %}
+                                <div data-toggle="modal" data-target="#trending_modal" class="el-plus js-el-plus"><span>+</span></div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="trending__slider-arrow"></div>
+            </div>
+            {% if section.settings.button_url  %}
+                <div class="btn-wrap btn-wrap--center">
+                    <a href="{{ section.settings.button_url }}" class="btn btn--secondary">{{ section.settings.button_text }} <i
+                                class="icon icon-i-arrow-right"></i></a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<div class="trending-slider-fix__overlay ">
+    <div class="trending-slider-fix__wrap">
+        <div class="trending-slider-fix js-trending-slider-fix">
+            {% for block in section.blocks %}
+                <div>
+                    <div class="trending-slider-fix__item">
+                        <div class="modal-header">
+                            <h5 class="modal-title trending__title">{{ block.settings.title }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">
+														<i class="icon icon-i-close"></i>
+													</span>
+                            </button>
+                        </div>
+                        <div class="modal-body trending-modal__content">
+                            <div class="trending-modal__instagram">
+                                <div class="trending-modal__image">
+                                    {% if block.settings.image %}
+                                        <img src="{{ block.settings.image | img_url: "master"}}" alt="{{ block.settings.image.alt  }}">
+                                    {% else %}
+                                        {{ 'image' | placeholder_svg_tag }}
+                                    {% endif %}
+                                    <span class="icon-instagram">
+							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path
+                                                            d="M14.166 1.66675H5.83268C3.5315 1.66675 1.66602 3.53223 1.66602 5.83342V14.1667C1.66602 16.4679 3.5315 18.3334 5.83268 18.3334H14.166C16.4672 18.3334 18.3327 16.4679 18.3327 14.1667V5.83342C18.3327 3.53223 16.4672 1.66675 14.166 1.66675Z"
+                                                            stroke="#F9F9FA" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path>
+													<path
+                                                            d="M13.3337 9.47501C13.4366 10.1685 13.3181 10.8769 12.9952 11.4992C12.6723 12.1215 12.1614 12.6262 11.5351 12.9414C10.9088 13.2566 10.1991 13.3663 9.5069 13.2549C8.81468 13.1436 8.17521 12.8167 7.67944 12.321C7.18367 11.8252 6.85685 11.1857 6.74546 10.4935C6.63408 9.8013 6.74379 9.09159 7.05901 8.46532C7.37423 7.83905 7.8789 7.32812 8.50123 7.00521C9.12356 6.68229 9.83187 6.56383 10.5254 6.66667C11.2328 6.77158 11.8878 7.10123 12.3935 7.60693C12.8992 8.11263 13.2288 8.76757 13.3337 9.47501Z"
+                                                            stroke="#F9F9FA" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path>
+													<path d="M14.584 5.41675H14.5923" stroke="#F9F9FA"
+                                                          stroke-linecap="round" stroke-linejoin="round"></path>
+							</svg>
+						</span>
+                                </div>
+                                <div class="trending-modal__name">
+                                    {{ block.settings.username }}
+                                </div>
+                                <div class="trending-modal__text">
+                                    {{ block.settings.description }}
+                                </div>
+
+
+                            </div>
+                            <div class="trending-modal__products trending-modal__slider">
+                                <div class="js-products-modal-slider">
+                                    {% render 'trending_product-card',product_card_product:block.settings.product, btn_text: block.settings.button_text %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="trending-slider-fix__arrow"></div>
+    </div>
+</div>
+
+{% schema %}
+{
+"name": "Trending",
+"settings": [
+{
+"type": "header",
+"content": "Text"
+},
+{
+"type": "text",
+"id": "title",
+"default": "Trending #2x4",
+"label": "Title"
+},
+{
+"type": "header",
+"content": "Link"
+},
+{
+"type": "text",
+"id": "button_text",
+"default": "SHOP ALL products",
+"label": "Link text"
+},
+{
+"type": "url",
+"id": "button_url",
+"label": "Link url",
+"info": "Leave the link url blank to hide the link."
+}
+],
+"blocks": [
+{
+"type": "trending_item",
+"name": "Trending item",
+"settings": [
+{
+"type": "header",
+"content": "Text"
+},
+{
+"type": "text",
+"id": "title",
+"default": "Trending #2x4",
+"label": "Item title"
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image"
+},
+{
+"type": "text",
+"id": "username",
+"default": "username",
+"label": "User name"
+},
+{
+"type": "richtext",
+"id": "description",
+"default": "<p>Description</p>",
+"label": "Description"
+},
+{
+"type": "header",
+"content": "product"
+},
+{
+"type": "product",
+"id": "product",
+"label": "Product"
+},
+{
+"type": "text",
+"id": "button_text",
+"default": "VIEW DETAILS",
+"label": "View all button text"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Trending"
+}
+]
+}
+{% endschema %}

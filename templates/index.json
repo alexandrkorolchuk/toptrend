@@ -308,10 +308,105 @@
         "show_view_all": true
       }
     },
-    "Recently_Viewed": {
-      "type": "td-recently-viewed",
+    "Image_with_text": {
+      "type": "main-nutrition-banner",
+      "blocks": {
+        "Image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/nutrition_big.jpg",
+            "table_image": "shopify:\/\/shop_images\/nutrition_2.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/nutrition_048521a7-a73c-48ae-92ec-fbb0237d70af.jpg"
+          }
+        },
+        "Text": {
+          "type": "text",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/nutrition_logo.png",
+            "title": "Give Nutrition",
+            "text": "<p>1 unit sold = 2 meals donated  on your behalf, around the world<\/p>",
+            "button_text": "Learn more",
+            "button_url": "shopify:\/\/blogs\/news\/2x4-give-nutrition"
+          }
+        }
+      },
+      "block_order": [
+        "Image",
+        "Text"
+      ],
       "settings": {
-        "title": "Recently Viewed"
+      }
+    },
+    "Trending": {
+      "type": "main-page-trending",
+      "disabled": false,
+      "blocks": {
+        "trending_item-1": {
+          "type": "trending_item",
+          "settings": {
+            "title": "Trending #2x4",
+            "image": "shopify:\/\/shop_images\/discover_img_1.jpg",
+            "username": "username",
+            "description": "<p>Description<\/p>",
+            "product": "2x4-joints-muscles",
+            "button_text": "VIEW DETAILS"
+          }
+        },
+        "trending_item-2": {
+          "type": "trending_item",
+          "settings": {
+            "title": "Trending #2x4",
+            "image": "shopify:\/\/shop_images\/doctor_1.jpg",
+            "username": "username",
+            "description": "<p>Description<\/p>",
+            "product": "2x4-cold-reducer",
+            "button_text": "VIEW DETAILS"
+          }
+        },
+        "trending_item-3": {
+          "type": "trending_item",
+          "settings": {
+            "title": "Trending #2x4",
+            "image": "shopify:\/\/shop_images\/discover_img_1.jpg",
+            "username": "username",
+            "description": "<p>Description<\/p>",
+            "product": "2x4-kids-multi",
+            "button_text": "VIEW DETAILS"
+          }
+        },
+        "trending_item-4": {
+          "type": "trending_item",
+          "settings": {
+            "title": "Trending #2x4",
+            "username": "username",
+            "description": "<p>Description<\/p>",
+            "product": "2x4-cold-reducer",
+            "button_text": "VIEW DETAILS"
+          }
+        }
+      },
+      "block_order": [
+        "trending_item-1",
+        "trending_item-2",
+        "trending_item-3",
+        "trending_item-4"
+      ],
+      "settings": {
+        "title": "Trending #2x4",
+        "button_text": "SHOP ALL products",
+        "button_url": "\/"
+      }
+    },
+    "newsletter": {
+      "type": "main-page-subscribe",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/subscribe_bg.png",
+        "title": "Insights For Your Insides",
+        "text": "Get the latest 2x4 nutrition news, exclusive offers, and 10% off your first order.",
+        "succses_title": "Welcome To The Family!",
+        "succses_text": "Thanks for subscribing! You will be the first to know about the news, exclusive offers,and discounts from 2x4 Health.",
+        "button_text": "Join The Family",
+        "button_mob_text": "Join"
       }
     }
   },
@@ -324,6 +419,8 @@
     "Doctors_slider",
     "Quiz",
     "Feature_Collection",
-    "Recently_Viewed"
+    "Image_with_text",
+    "Trending",
+    "newsletter"
   ]
 }

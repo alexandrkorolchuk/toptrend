@@ -1,0 +1,139 @@
+<section class="nutrition nutrition--last">
+    <div class="container">
+        <div class="nutrition__inner bg--green-light2">
+            {% for block in section.blocks %}
+                {% case block.type %}
+                    {% when "image" %}
+                        <div class="nutrition__image mobile-hide">
+                            {% if block.settings.image %}
+                                <picture>
+                                    <source srcset="{{ block.settings.image | img_url: "master" }}" media="(min-width: 1500px)">
+                                    {% if block.settings.table_image %}
+                                        <img src="{{ block.settings.table_image | img_url: "master" }}" alt="{{ block.settings.image }}">
+                                    {% else %}
+                                        <img src="{{ block.settings.image | img_url: "master" }}" alt="{{ block.settings.image.alt }}">
+                                    {% endif %}
+                                </picture>
+                            {% endif %}
+                        </div>
+                    {% when "text" %}
+                        <div class="nutrition__content">
+                            {% if block.settings.logo %}
+                                <div class="nutrition__content--image">
+                                    <img src="{{ block.settings.logo | img_url: "grande" }}" alt="nutrition_logo">
+                                </div>
+                            {% endif %}
+                            <div class="nutrition__content--title">
+                                {{ block.settings.title }}
+                            </div>
+                            {% for block in section.blocks %}
+                                {% if block.type == "image" %}
+                                    {% if block.settings.mobile_image %}
+                                        <div class="nutrition__image desktop-hide">
+                                            <img src="{{ block.settings.mobile_image | img_url: "master" }}" alt="{{ block.settings.mobile_image.alt }}">
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            <div class="nutrition__content--desc">
+                                {{ block.settings.text }}
+                            </div>
+                            {% if block.settings.button_url %}
+                                <div class="nutrition__content--btn">
+                                    <a href="{{ block.settings.button_url }} " class="btn btn--secondary"> {{ block.settings.button_text }} <i
+                                                class="icon icon-i-arrow-right"></i></a>
+                                </div>
+                            {% endif %}
+                        </div>
+                {% endcase %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+"name": "t:sections.image-with-text.name",
+"class": "spaced-section spaced-section--full-width",
+"settings": [
+
+],
+"blocks": [
+{
+"type": "image",
+"name": "Image",
+"limit": 1,
+"settings": [
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image"
+},
+{
+"type": "image_picker",
+"id": "table_image",
+"label": "Table Image"
+},
+{
+"type": "image_picker",
+"id": "mobile_image",
+"label": "Mobile Image"
+}
+]
+},
+{
+"type": "text",
+"name": "Text",
+"limit": 1,
+"settings": [
+{
+"type": "image_picker",
+"id": "logo",
+"label": "Text block logo"
+},
+{
+"type": "text",
+"id": "title",
+"default": "Titile",
+"label": "Title"
+},
+{
+"type": "richtext",
+"id": "text",
+"default": "<p>Description</p>",
+"label": "Description"
+},
+{
+"type": "header",
+"content": "Link"
+},
+{
+"type": "text",
+"id": "button_text",
+"default": "Link",
+"label": "Link text"
+},
+{
+"type": "url",
+"id": "button_url",
+"label": "Link url",
+"info": "Leave the link url blank to hide the Link."
+}
+]
+}
+],
+"presets": [
+{
+"name": "t:sections.image-with-text.presets.name",
+"blocks": [
+{
+"type": "image"
+},
+{
+"type": "text"
+}
+]
+}
+]
+}
+{% endschema %}

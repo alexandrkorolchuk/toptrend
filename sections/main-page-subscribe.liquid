@@ -1,0 +1,165 @@
+<section class="subscribe" {% if section.settings.image %} style="background-image: url('{{ section.settings.image | img_url: "master" }}') " {% endif %}>
+    <div class="container">
+
+        <form class="newsletter-form" id="newsletter-section-form">
+            <div class="subscribe__inner">
+                <div class="section-header">
+                    <div class="section-header__title">
+                        {{ section.settings.title }}
+                    </div>
+                    <div class="section-header__description">
+                        {{ section.settings.text }}
+                    </div>
+                </div>
+                <div class="subscribe__item{% if form.posted_successfully? %} hidden{% endif %} ">
+                    <input type="hidden" name="contact[tags]" value="newsletter">
+                    <div class="subscribe-form-group">
+                        <input type="email"
+                               aria-required="true"
+                               autocorrect="off"
+                               autocapitalize="off"
+                               autocomplete="email"
+                               placeholder="Enter your email here" name="contact[email]"
+                               data-fild-id="email"
+                               id="Email-subscribe" class="subscribe-form-group__input" autocapitalize="off">
+                        <button type="submit" class="button btn btn--black subscribe-form-group__submit" title="Subscribe"><span class="mobile-hide">{{ section.settings.button_text }}</span>
+                            <span class="desktop-hide">{{ section.settings.button_mob_text }}</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="subscribe__inner subscribe__inner__succses" style="display: none">
+                <div class="section-header">
+                    <div class="section-header__title">
+                        {{ section.settings.succses_title }}
+                    </div>
+                    <div class="section-header__description">
+                        {{ section.settings.succses_text }}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<div style="display:none;">
+    <form id="klaviyo-newsletter-section-form" class="klaviyo_styling" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+        <input type="hidden" name="g" value="T3m58K">
+        <input type="hidden" name="$fields" value="$consent">
+        <input type="hidden" name="$list_fields" value="$consent">
+        <div class="klaviyo_field_group">
+            <label for="k_id_email">Newsletter Sign Up</label>
+            <input class="" type="email" value="" name="email" id="k_id_email" placeholder="Your email" />
+        </div>
+        <div class="klaviyo_messages">
+            <div class="success_message" style="display:none;"></div>
+            <div class="error_message" style="display:none;"></div>
+        </div>
+        <div class="klaviyo_form_actions">
+            <button type="submit" class="klaviyo_submit_button">Subscribe</button> </div>
+    </form>
+</div>
+<script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+<script type="text/javascript">
+    KlaviyoSubscribe.attachToForms('#klaviyo-newsletter-section-form', {
+        hide_form_on_success: true,
+        extra_properties: {
+            $source: '$embed',
+            $method_type: "Klaviyo Form",
+            $method_id: 'embed',
+            $consent_version: 'Embed default text'
+        }
+    });
+</script>
+<script>
+    $('#newsletter-section-form').on('submit',function (event){
+        event.preventDefault();
+        let form = $(this);
+        let KlaviyoForm = $('#klaviyo-newsletter-section-form');
+
+        form.find('[data-fild-id]').each(function (){
+            KlaviyoForm.find(`input[name="${$(this).attr('data-fild-id')}"]`).val($(this).val());
+        })
+        KlaviyoForm.trigger("submit");
+        setTimeout(function() {
+            form.find('.subscribe__inner').css('display','none');
+            form.find('.subscribe__inner.subscribe__inner__succses').css('display','block');
+        },500);
+
+
+        setTimeout(function() {
+            $('#newsletter-section-form').trigger('reset');
+            KlaviyoForm.trigger('reset');
+        },1000);
+    });
+</script>
+
+{% schema %}
+{
+"name": "Newsletter",
+"settings": [
+{
+"type": "header",
+"content": "background image"
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image"
+},
+{
+"type": "header",
+"content": "Text"
+},
+{
+"type": "text",
+"id": "title",
+"default": "Insights For Your Insides",
+"label": "Title"
+},
+{
+"type": "textarea",
+"id": "text",
+"default": "Get the latest 2x4 nutrition news, exclusive offers, and 10% off your first order.",
+"label": "Text"
+},
+{
+"type": "header",
+"content": "Succses Text"
+},
+{
+"type": "text",
+"id": "succses_title",
+"default": "Welcome To The Family!",
+"label": "Succses title"
+},
+{
+"type": "textarea",
+"id": "succses_text",
+"default": "Thanks for subscribing! You will be the first to know about the news, exclusive offers,and discounts from 2x4 Health.",
+"label": "Succses text"
+},
+{
+"type": "header",
+"content": "Button"
+},
+{
+"type": "text",
+"id": "button_text",
+"default": "Join The Family",
+"label": "Button text"
+},
+{
+"type": "text",
+"id": "button_mob_text",
+"default": "Join",
+"label": "Button mobile text"
+}
+],
+"presets": [
+{
+"name": "Newsletter"
+}
+]
+}
+{% endschema %}
