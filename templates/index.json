@@ -308,12 +308,6 @@
         "show_view_all": true
       }
     },
-    "Recently_Viewed": {
-      "type": "main-recently-viewed",
-      "settings": {
-        "title": "Recently Viewed Products"
-      }
-    },
     "Image_with_text": {
       "type": "main-nutrition-banner",
       "blocks": {
@@ -425,7 +419,6 @@
     "Doctors_slider",
     "Quiz",
     "Feature_Collection",
-    "Recently_Viewed",
     "Image_with_text",
     "Trending",
     "newsletter"

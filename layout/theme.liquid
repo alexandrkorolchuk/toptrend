@@ -114,6 +114,10 @@
 
   <script src="{{ 'libs.js' | asset_url }}"></script>
   <script src="{{ 'app.js' | asset_url }}"></script>
+
+    {% if template contains 'product' %}
+        {{ 'jquery.products.js' | asset_url | script_tag }}
+    {% endif %}
 </div>
 <script>
   window.shopUrl = '{{ shop.url }}';

@@ -1,4 +1,4 @@
-<header class="header header--transparent  header-site">
+<header class="header{% if template.name == "index" %} header--transparent {% endif %} header-site">
   <div class="container">
     <div class="header-nav">
       <div class="header-nav__left">
@@ -6,25 +6,24 @@
           <span></span>
           <span></span>
           <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
         </div>
       </div>
       <div class="header-nav__center">
-        {% if  section.settings.logo %}
+        <a href="{{ routes.root_url }}" class="header__logo" title="home">
+          {% if  section.settings.logo %}
           <picture>
             <source srcset="{{ section.settings.logo | img_url: "master" }}" media="(min-width: 1360px)">
             <img src="{{ section.settings.mobile_logo | img_url: "master" }}" alt="logo" class="header__logo-icon">
           </picture>
-        {% else %}
-          {{ shop.name }}
-        {% endif %}
+          {% else %}
+            {{ shop.name }}
+          {% endif %}
+        </a>
       </div>
       <div class="header-nav__right">
         <ul class="header__controls">
           <li class="tablet-hide">
-            <a href="{{ routes.search_url }}" class="header__search">
+            <a href="javascript:void(0);" class="header__search">
               <svg class="header__search-icon" width="23" height="23" viewBox="0 0 23 23" fill="none"
                    xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -35,8 +34,11 @@
                       fill="white"/>
               </svg>
             </a>
+            <form action="{{ routes.search_url }}" method="get">
+              <input class="header__search-input" type="search" name="q" id="search-input" value="{{ search.terms | escape }}" placeholder="Refine your search">
+            </form>
           </li>
-          {% if shop.customer_accounts_enabled %}
+          {%- if shop.customer_accounts_enabled -%}
           <li class="tablet-hide">
             <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="header__account">
               <svg class="header__account-icon" width="24" height="25" viewBox="0 0 24 27" fill="none"
@@ -61,14 +63,15 @@
                         d="M14.2697 6.39595C14.2697 3.41585 12.4578 1 10.2227 1C7.98767 1 6.17578 3.41585 6.17578 6.39595"
                         stroke="white" stroke-width="2"/>
               </svg>
-              <span class="header__in-cart" id="cart-bubble" {%- if cart == empty -%} style="display: none" {%- endif -%}>{{ cart.item_count }}</span>
+                <span class="header__in-cart" id="cart-bubble" {%- if cart == empty -%} style="display: none" {%- endif -%}>{{ cart.item_count }}</span>
+
             </a>
           </li>
         </ul>
         {% if section.settings.button_url %}
-          <a href="{{ section.settings.button_url }}" target="_blank" a class="btn header__quiz tablet-hide">
-            {{ section.settings.button_text }}
-          </a>
+        <a href="{{ section.settings.button_url }}" target="_blank" a class="btn header__quiz tablet-hide">
+          {{ section.settings.button_text }}
+        </a>
         {% endif %}
       </div>
     </div>
@@ -79,13 +82,13 @@
   <div class="mobile-menu__inner">
     <div class="mobile-menu__content">
       {% if section.settings.main-menu %}
-        <ul>
-          {% for link in section.settings.main-menu.links %}
-            <li>
-              <a href="{{ link.url }}">{{ link.title }}</a>
-            </li>
-          {%endfor%}
-        </ul>
+      <ul>
+        {% for link in section.settings.main-menu.links %}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+        {%endfor%}
+      </ul>
       {% endif %}
       {% if section.settings.second-menu %}
         <ul>
@@ -103,20 +106,20 @@
       </ul>
     </div>
     {% if section.settings.button_url %}
-      <div class="mobile-menu__info">
-        {% if section.settings.button_description %}
-          <div class="mobile-menu__info--title">
-            {{ section.settings.button_description }}
-          </div>
-        {% endif %}
-        <div class="mobile-menu__info--btn-wrap">
+    <div class="mobile-menu__info">
+      {% if section.settings.button_description %}
+      <div class="mobile-menu__info--title">
+        {{ section.settings.button_description }}
+      </div>
+      {% endif %}
+      <div class="mobile-menu__info--btn-wrap">
 
           <a href="{{ section.settings.button_url }}" target="_blank" a class="btn">
             {{ section.settings.button_text }}
           </a>
 
-        </div>
       </div>
+    </div>
     {% endif %}
     <div class="mobile-menu__close js-mobile-menu-close">
       <i class="icon icon-i-close"></i>
@@ -124,13 +127,28 @@
   </div>
 </div>
 
+<div class="mobile__search-bg"></div>
+<div class="input-search__field mobile__search main-faq__search-wrap">
+  <div class="container">
+    <input type="search" id="mobile-search" class="main-faq__search js-input-product-search" placeholder="Refine your search">
+    <label class="label-search" for="mobile-search">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15.3217 8.10999C15.3217 11.8849 12.3188 14.9153 8.65108 14.9153C4.98334 14.9153 1.98047 11.8849 1.98047 8.10999C1.98047 4.33505 4.98334 1.30469 8.65108 1.30469C12.3188 1.30469 15.3217 4.33505 15.3217 8.10999Z" stroke="#B7B4AE" stroke-width="2"></path>
+        <path d="M13.4453 12.9883L18.7189 18.3544" stroke="#B7B4AE" stroke-width="2"></path>
+      </svg>
+    </label>
+    <label class="label-close js-search-close" for="mobile-search">
+      <i class="icon icon-i-close"></i>
+    </label>
+  </div>
+</div>
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "Organization",
     "name": {{ shop.name | json }},
     {% if section.settings.logo %}
-{% assign image_size = section.settings.logo.width | append: 'x' %}
+      {% assign image_size = section.settings.logo.width | append: 'x' %}
       "logo": {{ section.settings.logo | img_url: image_size | prepend: "https:" | json }},
     {% endif %}
     "sameAs": [
@@ -167,58 +185,58 @@
 
 {% schema %}
 {
-"name": "t:sections.header.name",
-"settings": [
-{
-"type": "header",
-"content": "Logo"
-},
-{
-"type": "image_picker",
-"id": "logo",
-"label": "Logo"
-},
-{
-"type": "image_picker",
-"id": "mobile_logo",
-"label": "Mobille logo"
-},
-{
-"type": "header",
-"content": "Drawer menu"
-},
-{
-"type": "link_list",
-"id": "main-menu",
-"label": "Main header menu"
-},
-{
-"type": "link_list",
-"id": "second-menu",
-"label": "Secondary header menu"
-},
-{
-"type": "header",
-"content": "Quiz"
-},
-{
-"type": "text",
-"id": "button_description",
-"default": "Not sure what you’re looking for?",
-"label": "Button description"
-},
-{
-"type": "text",
-"id": "button_text",
-"default": "Take the Quiz",
-"label": "Button text"
-},
-{
-"type": "url",
-"id": "button_url",
-"label": "Button url",
+  "name": "t:sections.header.name",
+  "settings": [
+    {
+    "type": "header",
+    "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+    "type": "image_picker",
+    "id": "mobile_logo",
+    "label": "Mobille logo"
+    },
+    {
+    "type": "header",
+    "content": "Drawer menu"
+    },
+    {
+      "type": "link_list",
+      "id": "main-menu",
+      "label": "Main header menu"
+    },
+    {
+    "type": "link_list",
+    "id": "second-menu",
+    "label": "Secondary header menu"
+    },
+    {
+    "type": "header",
+    "content": "Quiz"
+    },
+    {
+    "type": "text",
+    "id": "button_description",
+    "default": "Not sure what you’re looking for?",
+    "label": "Button description"
+    },
+    {
+    "type": "text",
+    "id": "button_text",
+    "default": "Take the Quiz",
+    "label": "Button text"
+    },
+    {
+    "type": "url",
+    "id": "button_url",
+    "label": "Button url",
 "info": "Leave the link blank to hide the button."
-}
-]
+    }
+  ]
 }
 {% endschema %}
