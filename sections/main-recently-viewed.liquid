@@ -1,0 +1,68 @@
+<section class="products-feature">
+    <div class="container">
+        <div class="products-feature__inner">
+            <div class="section-header">
+                <div class="section-header__title">
+                    {{ section.settings.title }}
+                </div>
+            </div>
+            <div class="products-feature__grid-wrap">
+                <div class="grid products-feature__grid products-feature__grid--slider js-products-feature-slider">
+                    {% include 'recently-viewed-mlveda' %}
+                </div>
+                <div class="products-feature__slider-arrow"></div>
+            </div>
+            {% if section.settings.show_view_all %}
+                <div class="btn-wrap--center">
+                    <a href="{{ section.settings.collection.url }}" class="btn btn--secondary"> {{ 'sections.featured_collection.view_all' | t }} <i
+                                class="icon icon-i-arrow-right"></i></a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<script>
+
+</script>
+
+{% schema %}
+{
+"name": "Recently Viewed Products",
+"tag": "section",
+"class": "spaced-section",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"default": "Recently Viewed Products",
+"label": "Heading"
+},
+{
+"type": "collection",
+"id": "collection",
+"label": "Collection"
+},
+{
+"type": "range",
+"id": "products_to_show",
+"min": 5,
+"max": 12,
+"step": 1,
+"default": 5,
+"label": "Maximum products to show"
+},
+{
+"type": "checkbox",
+"id": "show_view_all",
+"default": true,
+"label": "Enable \"View all\" button"
+}
+],
+"presets": [
+{
+"name": "Recently Viewed Products"
+}
+]
+}
+{% endschema %}
